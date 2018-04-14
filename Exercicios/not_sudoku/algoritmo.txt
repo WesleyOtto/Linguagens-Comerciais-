@@ -1,0 +1,34 @@
+
+// Linha 
+
+1 - Inicio o algoritmo na coordenada 00.
+2 - Verifico nessa linha qual o primeira coordenada de campo vazio.
+2 - Faço: 
+	 2.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
+	 2.2 Verifico nos próximos campos vazios Se posso inserir esse numero.
+	     2.2.1 Caso exista apenas um campo para esse número, eu insiro ele na posisão
+
+	Enquanto (linha < 9) e (se tiver adicionar numeros na minha resolução) e (campos vazios)
+
+// Coluna 
+3 - Verifico na coluna qual o primeira coordenada de campo vazio.
+
+3 - Faço: 
+	 3.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
+	 3.2 Verifico nos próximos campos vazios Se posso inserir esse numero.
+	    3.2.1 Caso exista apenas um campo para esse número, eu insiro ele na posisão
+
+	Enquanto (coluna < 9) e (se tiver adicionar numeros na minha resolução) (campos vazios)
+
+
+// quadrante 
+4 - Verifico no quadrante qual o primeira coordenada de campo vazio.
+
+4 - Faço: 
+	 4.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
+	4.2 Verifico nos próximos campos vazios Se posso inserir esse numero.
+	     4.2.1 Caso exista apenas um campo para esse número, eu insiro ele na posisão
+
+	Enquanto (quadrante < 9) e (se tiver adicionar numeros na minha resolução) (campos vazios)
+
+5 - Repito novamente o passo 1. 
