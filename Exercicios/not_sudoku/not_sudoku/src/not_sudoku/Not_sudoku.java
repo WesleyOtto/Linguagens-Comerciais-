@@ -1,4 +1,4 @@
-/**
+    /**
  *
  * @author  Bruno Borges
  *          Guilherme Cabrini  
@@ -7,6 +7,12 @@
 
 package not_sudoku;
 import java.util.Scanner; 
+
+//Importes para leitura de arquivo 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 public class Not_sudoku {
   
@@ -38,6 +44,41 @@ public class Not_sudoku {
         }while(repetir.equals("S") || repetir.equals("s"));   
     }
     
+    public static void defineSudoku(String arquivo){
+        String informacao = "";
+        int linha = 0; 
+        
+        try
+        {    
+            FileReader arqSudoku = new FileReader(arquivo);
+            BufferedReader lerArqSudoku = new BufferedReader(arqSudoku);
+            
+            // Armazena a primeira linha 
+            informacao = lerArqSudoku.readLine();
+            
+            while(informacao != null){
+                
+                for(int cont = 0; cont < informacao.length(); cont++){
+                    
+                    // Essa linha converte char para String
+                    String letra = informacao.charAt(cont) + "";
+                    sudoku[linha][cont] = Integer.parseInt(letra);
+                    
+                }  
+                linha ++;
+                informacao = lerArqSudoku.readLine();
+                
+            }   
+            arqSudoku.close();
+        
+        } catch (IOException e){
+            
+            System.err.printf("Erro na abertura do arquivo: %s. \n");
+            e.getMessage();
+        }
+            
+    }
+    
         
     public static void exibeSudoku(){
         
@@ -52,23 +93,14 @@ public class Not_sudoku {
         
     public static void resolveSudoku(){
     
-        //checar linha
-        //checar coluna
-        //checar quadrante
-        /*
-           1- Checo a minhas 
-        
-        
-        */
-                
-              
+    
     }
     
     public static void main(String[] args) {
         
         sudoku = new int[9][9];
     
-        defineSudoku(); 
+        defineSudoku("C:\\temp\\Sudoku.txt"); 
         exibeSudoku();
         resolveSudoku();
         
