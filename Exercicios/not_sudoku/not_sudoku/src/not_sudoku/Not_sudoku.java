@@ -20,7 +20,7 @@ public class Not_sudoku {
   
     public static int sudoku[][];
     
-    //Usuario define o sudoku
+    //Sudoku definido pela entrada de dados do usuario
     public static void defineSudoku(){
         
         int numero, linha, coluna;
@@ -46,6 +46,7 @@ public class Not_sudoku {
         }while(repetir.equals("S") || repetir.equals("s"));   
     }
     
+    // Sudoku definido por um arquivo texto 
     public static void defineSudoku(String arquivo){
         String informacao = "";
         int linha = 0; 
@@ -80,7 +81,8 @@ public class Not_sudoku {
         }
             
     }
-        
+    
+    //Metodo exibe o sudoku na tela
     public static void exibeSudoku(){
         
         for (int linha = 0; linha < sudoku.length; linha++) {
@@ -91,13 +93,16 @@ public class Not_sudoku {
         }
     }
     
-    //Metodo para chegar se posso colocar o numero teste na posição
+    /* O metodo Check numero checa: 
+     *  1  - se existe campo vazio
+     *  2  - se posso inserir o numero teste na linha, coluna ou no quadrante 
+    */
     public static boolean checkNumero(int linha, int coluna, int teste){
         int auxLinha, auxColuna;
         
         if(sudoku[linha][coluna] == teste) return true;
         
-        //Checa se o numero é o numero do sudoku
+        //Checa se existe um campo vazio
         if(sudoku[linha][coluna] != 0) return false;
         
          //Testo numero na linha 
@@ -122,7 +127,12 @@ public class Not_sudoku {
     return true;
     }    
     
-    // Verifica se o numero se encontra uma unica vez na linha, e insere
+                     // Metodo de resolucao da linha
+    
+    /*  
+    *   Verifica se o numero se encontra uma unica vez na linha
+    *   caso for unico na linha ele acaba inserindo na coordenada 
+    */
     public static boolean TesteLinhaNumero(int linha, int teste){
         int checkTeste = 0; int auxColuna = 0, coluna = 0;    
         
@@ -143,7 +153,7 @@ public class Not_sudoku {
         return true; 
     }
         
-   // Resolve a linha    
+   // Faz o incremento do numero a ser testado   
     public static boolean linhaResolve(int linha){
         int teste = 1; 
         boolean inseriu = false;
@@ -152,13 +162,16 @@ public class Not_sudoku {
             inseriu = TesteLinhaNumero(linha, teste);
             teste++;
         }
-        
- 
+  
        return inseriu ;
     }
     
-    // Verifica se o numero se encontra uma unica vez na coluna e insere
-    
+                     // Metodo de resolucao da Coluna 
+
+    /*  
+    *   Verifica se o numero se encontra uma unica vez na coluna
+    *   caso for unico na coluna ele acaba inserindo na coordenada 
+    */
     public static boolean TesteColunaNumero(int coluna, int teste){
         int checkTestec = 0; int auxLinha = 0, linha = 0;    
         
@@ -179,7 +192,7 @@ public class Not_sudoku {
         return true; 
     }
     
-    // resolve a coluna
+   // Faz o incremento do numero a ser testado   
     public static boolean colunaResolve(int coluna){
         
         int teste = 1; 
@@ -190,12 +203,59 @@ public class Not_sudoku {
             inseriu = TesteColunaNumero(coluna, teste);
             teste++;
         }
-        
- 
+      
        return inseriu ;
     
     }
     
+                     // Metodo de resolucao do Quadrante 
+
+    /*  
+    *   Verifica se o numero se encontra uma unica vez no quadrante
+    *   caso for unico na quadrante ele acaba inserindo na coordenada 
+    */
+    public static boolean TesteQuadranteResolve(int linha, int coluna, int teste){
+        int auxLinha, auxColuna;
+        int insereLinha = 0, insereColuna = 0, checkTeste = 0; 
+        
+        // Testo numero no quadrante 
+        
+        auxLinha = linha / 3;
+        auxColuna = coluna / 3;
+
+        for (int l = auxLinha * 3; l < (auxLinha + 1) * 3; l++)
+          for (int c = auxColuna * 3; c < (auxColuna + 1) * 3; c++){
+             if(checkNumero(linha, coluna, teste)){
+                checkTeste ++;
+                insereLinha = linha;
+                insereColuna = coluna; 
+            }
+            
+          }
+            
+         if(checkTeste == 1){
+            sudoku[insereLinha][insereColuna] = teste;
+            return false;
+        }
+    
+        return true;
+    }
+    
+    // Faz o incremento do numero a ser testado   
+    public static boolean quadranteResolve(int linha, int coluna){
+        int teste = 1; 
+        
+        boolean inseriu = false;
+        
+        while(teste < 10){
+            inseriu = TesteQuadranteResolve(linha, coluna, teste);
+            teste++;
+        }
+      
+       return inseriu ;
+    }
+    
+    // Verifica se existe campo Vazio
     public static boolean campoVazio(){
          for (int linha = 0; linha < sudoku.length; linha++) {
             for (int coluna = 0; coluna < sudoku[linha].length; coluna++){
@@ -210,40 +270,43 @@ public class Not_sudoku {
     public static void resolveSudoku(){
     
         boolean linhaInput = false, colunaInput = false;
-     
-        
+   
         do{
             int linha = 0;
             int coluna = 0;
            
-             
+            // Resolvo a linha  
             while(linha <= 8 ){
                 linhaInput = linhaResolve(linha);
                 linha ++;
             }
-            
-           
-           
+     
+           // Resolvo a Coluna
             while(coluna <= 8 ){
                colunaInput = colunaResolve(coluna);
                coluna ++;
                
             }
-           
-         // Enquanto existir insercao deu um numero eu continuo fazendo ou se existir campo vazio 
-           
-        }while(linhaInput || colunaInput || campoVazio()); 
-        
-       
             
+            // Resolvo o Quadrante
+            for ( linha = 0; linha < sudoku.length; linha++) {
+                 for ( coluna = 0; coluna < sudoku[linha].length; coluna++){
+                     quadranteResolve(linha, coluna);
+                 }
+            
+            }
+    
+         // Enquanto existir campo vazio 
+           
+        }while(campoVazio()); 
+  
     }
-    
-    
+        
     public static void main(String[] args) {
         
         sudoku = new int[9][9];
     
-        defineSudoku("C:\\temp\\Sudoku2.txt"); 
+        defineSudoku("C:\\Users\\Coord1\\Documents\\Sudoku.txt"); 
         System.out.println("Sudokuu");
         exibeSudoku();
         System.out.println("-------");
