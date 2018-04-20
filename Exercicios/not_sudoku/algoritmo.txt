@@ -2,33 +2,38 @@
 // Linha 
 
 1 - Inicio o algoritmo na coordenada 00.
-2 - Verifico nessa linha qual o primeira coordenada de campo vazio.
-2 - Faço: 
-	 2.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
-	 2.2 Verifico nos próximos campos vazios Se posso inserir esse numero.
-	     2.2.1 Caso exista apenas um campo para esse número, eu insiro ele na posisão
 
-	Enquanto (linha < 9) e (se tiver adicionar numeros na minha resolução) e (campos vazios)
+2 - FaÃ§o : 
+3 - 	Verifico nessa linha qual o primeira coordenada de campo vazio.
+4- 	 FaÃ§o: 
+		 2.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
+		 2.2 Verifico nos prÃ³ximos campos vazios Se posso inserir esse numero.
+	    	 2.2.1 Caso exista apenas um campo para esse nÃºmero, eu insiro ele na posisÃ£o
+	 	incremento linha 
+   	 Enquanto linha < 9 
+	
 
 // Coluna 
-3 - Verifico na coluna qual o primeira coordenada de campo vazio.
+	3 - Verifico na coluna qual o primeira coordenada de campo vazio.
 
-3 - Faço: 
-	 3.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
-	 3.2 Verifico nos próximos campos vazios Se posso inserir esse numero.
-	    3.2.1 Caso exista apenas um campo para esse número, eu insiro ele na posisão
-
-	Enquanto (coluna < 9) e (se tiver adicionar numeros na minha resolução) (campos vazios)
+	3 - FaÃ§o: 
+		 3.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
+		 3.2 Verifico nos prÃ³ximos campos vazios Se posso inserir esse numero.
+	   	 3.2.1 Caso exista apenas um campo para esse nÃºmero, eu insiro ele na posisÃ£o
+            	incremento coluna 
+   	 Enquanto coluna < 9 
+	 
+   enquanto tiver campo vazio 
 
 
 // quadrante 
 4 - Verifico no quadrante qual o primeira coordenada de campo vazio.
 
-4 - Faço: 
+4 - FaÃ§o: 
 	 4.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
-	4.2 Verifico nos próximos campos vazios Se posso inserir esse numero.
-	     4.2.1 Caso exista apenas um campo para esse número, eu insiro ele na posisão
+	4.2 Verifico nos prÃ³ximos campos vazios Se posso inserir esse numero.
+	     4.2.1 Caso exista apenas um campo para esse nÃºmero, eu insiro ele na posisÃ£o
 
-	Enquanto (quadrante < 9) e (se tiver adicionar numeros na minha resolução) (campos vazios)
+	Enquanto (quadrante < 9) e (se tiver adicionar numeros na minha resoluÃ§Ã£o) (campos vazios)
 
 5 - Repito novamente o passo 1. 
