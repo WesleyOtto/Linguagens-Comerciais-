@@ -27,13 +27,16 @@
 
 
 // quadrante 
-4 - Verifico no quadrante qual o primeira coordenada de campo vazio.
+	4 - Verifico no quadrante qual o primeira coordenada de campo vazio.
 
-4 - Faço: 
-	 4.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
-	4.2 Verifico nos próximos campos vazios Se posso inserir esse numero.
-	     4.2.1 Caso exista apenas um campo para esse número, eu insiro ele na posisão
+	4 - Faço: 
+		4.1 o mapeamento do primeiro numero que posso colocar nesse primeira campo
+		4.2 Verifico nos próximos campos vazios Se posso inserir esse numero.
+	   	4.2.1 Caso exista apenas um campo para esse número, eu insiro ele na posisão
+		incremento linha
+		incremento coluna
+		Enquanto (linha < 9 && coluna < 9)
 
-	Enquanto (quadrante < 9) e (se tiver adicionar numeros na minha resolução) (campos vazios)
-
-5 - Repito novamente o passo 1. 
+   enquanto tiver campo vazio 
+   
+  5- Mostro a solução
