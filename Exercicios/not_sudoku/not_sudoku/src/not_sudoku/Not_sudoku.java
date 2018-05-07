@@ -306,7 +306,7 @@ public class Not_sudoku {
         
         sudoku = new int[9][9];
     
-        defineSudoku("C:\\Users\\Coord1\\Documents\\Sudoku.txt"); 
+        defineSudoku("C:\\temp\\Sudoku.txt"); 
         System.out.println("Sudokuu");
         exibeSudoku();
         System.out.println("-------");
